@@ -20,16 +20,6 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
-	@Autowired
-	private BlogRepository blogRepository;
-	@Autowired
-	private ElasticService elasticService;
-	@Autowired
-	private ElasticsearchTemplate elasticsearchTemplate;
-	@Test
-	public void contextLoads() {
-		//blogRepository.save(new Blog(123, 456, 789));
-	}
 	RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.237.130", 9200)));
 	@Test
 	public void test1(){
