@@ -50,7 +50,11 @@ public class DemoApplicationTests {
 		String id = "1";
 		IndexRequest request = new IndexRequest(index, type, id);
 		Map<String, Object> jsonMap = new HashMap<>();
-		jsonMap.put("address", "解放路");
+		jsonMap.put("regionname", "丁豪广场");
+		jsonMap.put("bldname", "1#楼");
+		jsonMap.put("cellname", "2单元");
+		jsonMap.put("roomname", "501室");
+		jsonMap.put("address", "工业南路66号");
 		jsonMap.put("name", "张三");
 		jsonMap.put("certno", "370102199805210011");
 		request.source(jsonMap);
@@ -69,7 +73,11 @@ public class DemoApplicationTests {
 		String id = "2";
 		IndexRequest request = new IndexRequest(index, type, id);
 		Map<String, Object> jsonMap = new HashMap<>();
-		jsonMap.put("address", "工业南路海信慧园1号楼2单元701号");
+		jsonMap.put("regionname", "海信慧园");
+		jsonMap.put("bldname", "2#楼");
+		jsonMap.put("cellname", "1单元");
+		jsonMap.put("roomname", "701室");
+		jsonMap.put("address", "工业南路61号");
 		jsonMap.put("name", "李四");
 		jsonMap.put("certno", "370102199805210012");
 		request.source(jsonMap);
@@ -88,7 +96,34 @@ public class DemoApplicationTests {
 		String id = "3";
 		IndexRequest request = new IndexRequest(index, type, id);
 		Map<String, Object> jsonMap = new HashMap<>();
-		jsonMap.put("address", "工业南路海信慧园1#楼2单元701室");
+		jsonMap.put("regionname", "海信慧园");
+		jsonMap.put("bldname", "2号楼");
+		jsonMap.put("cellname", "1单元");
+		jsonMap.put("roomname", "701室");
+		jsonMap.put("address", "工业南路61号");
+		jsonMap.put("name", "李四");
+		jsonMap.put("certno", "370102199805210012");
+		request.source(jsonMap);
+		try {
+			IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+			System.out.println(indexResponse);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void test5(){
+		String index = "fangwu_index";
+		String type = "fangwu_type";
+		// 唯一编号
+		String id = "4";
+		IndexRequest request = new IndexRequest(index, type, id);
+		Map<String, Object> jsonMap = new HashMap<>();
+		jsonMap.put("regionname", "新东方花园");
+		jsonMap.put("bldname", "2号楼");
+		jsonMap.put("cellname", "1单元");
+		jsonMap.put("roomname", "701室");
+		jsonMap.put("address", "舜华路6号");
 		jsonMap.put("name", "李四");
 		jsonMap.put("certno", "370102199805210012");
 		request.source(jsonMap);
