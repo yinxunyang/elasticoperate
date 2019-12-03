@@ -71,5 +71,43 @@ public class DemoApplicationTests {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void test3(){
+		String index = "fangwu_index";
+		String type = "fangwu_type";
+		// 唯一编号
+		String id = "2";
+		IndexRequest request = new IndexRequest(index, type, id);
+		Map<String, Object> jsonMap = new HashMap<>();
+		jsonMap.put("address", "工业南路海信慧园1号楼2单元701号");
+		jsonMap.put("name", "李四");
+		jsonMap.put("certno", "370102199805210012");
+		request.source(jsonMap);
+		try {
+			IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+			System.out.println(indexResponse);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void test4(){
+		String index = "fangwu_index";
+		String type = "fangwu_type";
+		// 唯一编号
+		String id = "2";
+		IndexRequest request = new IndexRequest(index, type, id);
+		Map<String, Object> jsonMap = new HashMap<>();
+		jsonMap.put("address", "工业南路海信慧园1#楼2单元701室");
+		jsonMap.put("name", "李四");
+		jsonMap.put("certno", "370102199805210012");
+		request.source(jsonMap);
+		try {
+			IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+			System.out.println(indexResponse);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
