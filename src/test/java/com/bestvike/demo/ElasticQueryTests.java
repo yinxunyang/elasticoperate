@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,7 +36,11 @@ public class ElasticQueryTests {
 		// 同步查询
 		try {
 			SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-			int i = 0;
+			// 结果
+			searchResponse.getHits().forEach(hit -> {
+				Map<String, Object> map = hit.getSourceAsMap();
+				System.out.println("普通查询的结果:" + map);
+			});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
