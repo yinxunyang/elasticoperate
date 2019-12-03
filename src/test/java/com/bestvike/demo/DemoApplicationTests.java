@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -21,6 +22,10 @@ import java.util.Map;
 public class DemoApplicationTests {
 	@Autowired
 	private BlogRepository blogRepository;
+	@Autowired
+	private ElasticService elasticService;
+	@Autowired
+	private ElasticsearchTemplate elasticsearchTemplate;
 	@Test
 	public void contextLoads() {
 		//blogRepository.save(new Blog(123, 456, 789));
@@ -39,6 +44,25 @@ public class DemoApplicationTests {
 		jsonMap.put("msgcode", 1);
 		jsonMap.put("sendtime", "2019-03-14 01:57:04");
 		jsonMap.put("message", "xuwujing study Elasticsearch");
+		request.source(jsonMap);
+		try {
+			IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+			System.out.println(indexResponse);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void test2(){
+		String index = "fangwu_index";
+		String type = "fangwu_type";
+		// 唯一编号
+		String id = "2";
+		IndexRequest request = new IndexRequest(index, type, id);
+		Map<String, Object> jsonMap = new HashMap<>();
+		jsonMap.put("address", "解放路");
+		jsonMap.put("name", "张三");
+		jsonMap.put("certno", "370102199805210011");
 		request.source(jsonMap);
 		try {
 			IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
