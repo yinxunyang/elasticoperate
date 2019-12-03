@@ -57,7 +57,7 @@ public class DemoApplicationTests {
 		String index = "fangwu_index";
 		String type = "fangwu_type";
 		// 唯一编号
-		String id = "2";
+		String id = "1";
 		IndexRequest request = new IndexRequest(index, type, id);
 		Map<String, Object> jsonMap = new HashMap<>();
 		jsonMap.put("address", "解放路");
@@ -95,7 +95,7 @@ public class DemoApplicationTests {
 		String index = "fangwu_index";
 		String type = "fangwu_type";
 		// 唯一编号
-		String id = "2";
+		String id = "3";
 		IndexRequest request = new IndexRequest(index, type, id);
 		Map<String, Object> jsonMap = new HashMap<>();
 		jsonMap.put("address", "工业南路海信慧园1#楼2单元701室");
